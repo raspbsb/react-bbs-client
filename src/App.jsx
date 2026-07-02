@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import BoardList from "./components/BoardList";
 import Write from "./components/Write";
-import "./App.css";
 
 function App() {
   return (
