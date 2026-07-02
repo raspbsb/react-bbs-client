@@ -8,7 +8,7 @@ export default function Write() {
     e.preventDefault();
 
     axios
-      .post("https://localhost:3000/write", {
+      .post("http://localhost:3000/write", {
         name: e.target.name.value,
         title: e.target.title.value,
         content: e.target.content.value,
@@ -23,7 +23,6 @@ export default function Write() {
         console.log("Request completed");
       });
   };
-
   return (
     <>
       <Form onSubmit={onSubmit}>

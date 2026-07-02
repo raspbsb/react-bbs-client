@@ -50,7 +50,7 @@ export default function BoardList() {
         </thead>
         <tbody>
           {list.map((item, idx) => (
-            <Board data={item} key={idx} />
+            <Board key={idx} data={item} />
           ))}
         </tbody>
       </Table>
