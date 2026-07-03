@@ -1,16 +1,24 @@
+import { Route, Routes } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import BoardList from "./components/BoardList";
 import Write from "./components/Write";
+import View from "./components/View";
 
 function App() {
   return (
-    <div className="container">
-      <h1>React BBS</h1>
-      <BoardList />
-      <hr />
-      <Write />
-    </div>
+    <>
+      <div className="container">
+        <h1>React BBS</h1>
+      </div>
+
+      {/* 라우팅 */}
+      <Routes>
+        <Route path="/" element={<BoardList />} />
+        <Route path="/write" element={<Write />} />
+        <Route path="/view/:id" element={<View />} />
+      </Routes>
+    </>
   );
 }
 

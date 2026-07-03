@@ -2,6 +2,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { Link } from "react-router";
 import { useEffect, useState } from "react";
 
 function Board({ data }) {
@@ -11,7 +12,9 @@ function Board({ data }) {
         <Form.Check />
       </td>
       <td>{data.id}</td>
-      <td>{data.title}</td>
+      <td>
+        <Link to={`/view/${data.id}`}>{data.title}</Link>
+      </td>
       <td>{data.writer}</td>
       <td>{data.date}</td>
     </tr>
@@ -38,6 +41,7 @@ export default function BoardList() {
 
   return (
     <>
+      <h2>글목록</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -49,14 +53,19 @@ export default function BoardList() {
           </tr>
         </thead>
         <tbody>
-          {list.map((item, idx) => (
-            <Board key={idx} data={item} />
-          ))}
+          {list.length === 0 ? (
+            <tr>
+              <td colSpan={5}>글이 없습니다.</td>
+            </tr>
+          ) : (
+            list.map((item, idx) => <Board key={idx} data={item} />)
+          )}
         </tbody>
       </Table>
       <div className="d-flex gap-1 justify-content-end">
-        <Button variant="primary">입력</Button>
-        <Button variant="secondary">수정</Button>
+        <Link to="/write" className="btn btn-primary">
+          입력
+        </Link>
         <Button variant="danger">삭제</Button>
       </div>
     </>
