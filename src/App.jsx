@@ -1,6 +1,6 @@
-import { Route, Routes } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { Route, Routes } from "react-router";
 import BoardList from "./components/BoardList";
 import Write from "./components/Write";
 import View from "./components/View";
