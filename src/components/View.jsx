@@ -9,6 +9,7 @@ export default function View({ handleModify }) {
     title: "",
     content: "",
     date: "",
+    image: null,
   });
   const [isError, setIsError] = useState(false);
   const { id } = useParams();
@@ -35,6 +36,7 @@ export default function View({ handleModify }) {
           title: data.title,
           content: data.content,
           date: data.date,
+          image: data.image_path,
         });
       })
       .catch(error => {
@@ -86,6 +88,15 @@ export default function View({ handleModify }) {
       </div>
       <hr />
       {content.content}
+      {content.image && (
+        <div>
+          <img
+            src={`http://localhost:3000/${content.image}`}
+            alt={content.title}
+            style={{ maxWidth: "100%" }}
+          />
+        </div>
+      )}
       <hr />
       <div className="d-flex gap-1 justify-content-end">
         <Link to="/" className="btn btn-primary">
