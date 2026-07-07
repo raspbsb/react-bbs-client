@@ -20,7 +20,7 @@ export default function Write({ isModifyMode, boardId, handleCancel }) {
   useEffect(() => {
     if (isModifyMode && boardId) {
       axios
-        .get(`http://localhost:3000/view?id=${boardId}`)
+        .get(`${API_URL}/view?id=${boardId}`)
         .then(response => {
           console.log(response.data); //[{..}]
           //setContent(response.data);
@@ -99,7 +99,7 @@ export default function Write({ isModifyMode, boardId, handleCancel }) {
     const formData = createFormData(validatedData);
 
     axios
-      .post("http://localhost:3000/write", formData, {
+      .post(`${API_URL}/write`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then(response => {
@@ -130,7 +130,7 @@ export default function Write({ isModifyMode, boardId, handleCancel }) {
     const formData = createFormData(validatedData, boardId);
 
     axios
-      .post("http://localhost:3000/update", formData, {
+      .post(`${API_URL}/update`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then(() => {
@@ -213,7 +213,7 @@ export default function Write({ isModifyMode, boardId, handleCancel }) {
         {content.image_path && (
           <div>
             <img
-              src={`http://localhost:3000/${content.image_path}`}
+              src={`${API_URL}/${content.image_path}`}
               alt={content.title}
               style={{ maxWidth: "200px" }}
             />

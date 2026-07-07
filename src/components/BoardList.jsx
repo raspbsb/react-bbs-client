@@ -5,6 +5,9 @@ import axios from "axios";
 import { Link } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 
+// 환경변수 불러오기
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Board({ data, onCheckBoxChange }) {
   return (
     <tr>
@@ -31,7 +34,7 @@ export default function BoardList() {
 
   const getList = useCallback(() => {
     axios
-      .get("http://localhost:3000/list", {})
+      .get(`${API_URL}/list`, {})
       .then(response => {
         console.log(response.data);
         setList(response.data);
@@ -66,7 +69,7 @@ export default function BoardList() {
     const boardIdList = checkList.join(); //[11,12]---> 11,12
 
     axios
-      .post("http://localhost:3000/deleteselect", { boardIdList })
+      .post(`${API_URL}/deleteselect`, { boardIdList })
       .then(response => {
         getList();
       })
