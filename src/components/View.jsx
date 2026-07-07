@@ -3,6 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 
+// 환경변수 불러오기
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function View({ handleModify }) {
   const [content, setContent] = useState({
     wrtier: "",

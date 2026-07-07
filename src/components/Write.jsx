@@ -4,6 +4,9 @@ import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// 환경변수 불러오기
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Write({ isModifyMode, boardId, handleCancel }) {
   let navigate = useNavigate();
   const [content, setContent] = useState({
